@@ -1,14 +1,11 @@
-# auto-deploy.ps1
+# Navigate to repo folder
+cd "C:\Users\sohai\OneDrive\gym"
 
-# Navigate to your project folder (if needed)
-cd "C:\Users\sohai\onedrive\gym"
+# Stage all changes including deleted files
+git add -A
 
-# Stage all changes
-git add .
+# Commit with current date & time
+git commit -m "Auto-deploy: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" 
 
-# Commit with timestamp
-$timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-git commit -m "Auto-deploy: $timestamp"
-
-# Push to main branch
+# Push to GitHub
 git push origin main
