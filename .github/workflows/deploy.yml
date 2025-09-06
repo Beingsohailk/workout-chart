@@ -3,11 +3,13 @@ name: Deploy Static Site to GitHub Pages
 on:
   push:
     branches:
-      - main  # triggers when you push to main
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:       # 👈 Add this section
+      contents: write  # give write access to GITHUB_TOKEN
 
     steps:
       - name: Checkout repository
@@ -18,5 +20,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
-          publish_branch: gh-pages  # deploys to gh-pages branch
-          force_orphan: true         # removes old files not in current commit
+          publish_branch: gh-pages
+          force_orphan: true
