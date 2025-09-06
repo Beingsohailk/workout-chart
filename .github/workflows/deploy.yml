@@ -3,7 +3,7 @@ name: Deploy Static Site to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # deploy on every push to main
 
 jobs:
   deploy:
@@ -17,4 +17,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          publish_dir: .        # folder to deploy (root in your case)
+          publish_branch: gh-pages   # target branch for GitHub Pages
